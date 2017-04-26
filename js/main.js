@@ -1,7 +1,7 @@
 
 $(function () {
     // Read in  data. 
-    d3.csv('/data/movie_metadata.csv', function (error, allData) {
+    d3.csv('./data/movie_metadata.csv', function (error, allData) {
 
         var colorScale;
 
