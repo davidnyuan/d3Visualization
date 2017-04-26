@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDB Data Visualization</title>
+
+    <!-- Libraries -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.8.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
+    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+
+    <!-- Custom files -->
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- your script file -->
+    <script src="js/main.js"></script>
+</head>
+
+<body class="container">
+    <h1>IMBD Data Visualization</h1>
+    <p>Here, I've created a data visualization in D3 based on IMDB data from Kaggle, which can be found <a href='https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset'>here</a>.</p>
+    <p>For this data set, many movies were part of several genres (an example is Christopher Nolan's Dark Knight Rises, which was both action and thriller). For these movies, they would count toward the visualizations for both statistics</p>
+    </br>
+    <p>The main visual encodings I used are positioning along a common scale, and length/area. Because my data uses categorical variables (year, and genres) I figured it would be most effective if I were to use a bar graph.
+        As with most other bar graphs, there is a common scale through which to compare the bars, and users can also compare the bars using their heights and the areas within each bar.
+        I felt that a bar graph was the best way to show the progression of how movie numbers changed over time (movies vs years) yet would also be effective in showing different quanitative
+        values against categorical values (budget vs genres). I would also consider color encoding to help users differentiate between the different columns. However, this may be a rather weak 
+        encoding since I wasn't able to figure out to make sure the same genre kept the same color throughout all the color schemes. 
+    </p>
+    <br>
+    <p>For my tools, I wanted my user to ask the same questions I would. That is, how has the movie industry changed over the years, and how do different genre's compare. The first
+        question can be answered by the "Movie Count per Year" which shows number of movies made from 2010 to 2016. There were more years, and these show how number of movies made increased drastically
+        from 1950's to current day, but I wanted to make movies counts relevant to the 21st century. For the second question, I allowed user to sort genre by movie count, grossings, and budget.
+        For these graphs, I cut out the 8 or 9 categories with the smallest quantitative value in order to not detract from the rest of the graph, or mess with the scale too much. From these graphs,
+        I found out that over the years, dramas are the most popular movie type and the must money have been spent on them, but action films have brought in the most amount of money.
+    </p>
+    </br>
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary ">
+				<input value="count" type="radio" name="options" id="option1" autocomplete="off">Movie Count per Genre
+			</label>
+        <label class="btn btn-primary active">
+				<input value="title_year" type="radio" name="options" id="option2" autocomplete="off" checked>Movie Count per Year
+			</label>
+        <label class="btn btn-primary">
+				<input value="gross" type="radio" name="options" id="option3" autocomplete="off" >Total Grossings by Genre
+			</label>
+        <label class="btn btn-primary">
+				<input value="budget" type="radio" name="options" id="option4" autocomplete="off">Total Budget by Genre
+			</label>
+    </div>
+    <div id="vis"></div>
+</body>
+
+</html>
